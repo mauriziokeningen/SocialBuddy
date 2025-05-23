@@ -5,7 +5,7 @@
   <title>Reconoce la emoción</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css" />
-  <script defer src="https://unpkg.com/face-api.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
   <script defer src="script.js"></script>
 </head>
 <body>
@@ -15,12 +15,14 @@
       <img src="assets/logoLetters.png" alt="logo" />
     </div>
 
-    <h1 id="titulo" style="font-family: Mulish;">Haz la emoción: <span id="emocion-objetivo">felicidad</span></h1>
+    <h1 id="titulo" style="font-family: 'Mulish', sans-serif;">
+      Haz la emoción: <span id="emocion-objetivo">felicidad</span>
+    </h1>
 
-    <video id="video" autoplay muted playsinline></video>
-
+    <div id="video-container" style="position: relative; width: 640px; height: 480px; margin: auto;">
+      <video id="video" width="720" height="560" autoplay muted playsinline></video>
+    </div>  
     <p id="feedback">Esperando tu expresión...</p>
-
   </div>
 </body>
 </html>

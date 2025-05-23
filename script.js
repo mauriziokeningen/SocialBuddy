@@ -2,10 +2,19 @@ const video = document.getElementById('video');
 const feedback = document.getElementById('feedback');
 const emocionObjetivo = 'happy'; // Puedes cambiarla a otra
 
-Promise.all([
-  faceapi.nets.tinyFaceDetector.loadFromUri('./models'),
-  faceapi.nets.faceExpressionNet.loadFromUri('./models')
-]).then(startVideo);
+async function iniciar() {
+  // Forzar backend webgl y esperar que TensorFlow esté listo
+  await faceapi.tf.setBackend('webgl');
+  await faceapi.tf.ready();
+
+  // Cargar modelos
+  await Promise.all([
+    faceapi.nets.tinyFaceDetector.loadFromUri('./models'),
+    faceapi.nets.faceExpressionNet.loadFromUri('./models')
+  ]);
+
+  startVideo();
+}
 
 function startVideo() {
   navigator.mediaDevices.getUserMedia({ video: true })
@@ -19,8 +28,10 @@ function startVideo() {
 }
 
 video.addEventListener('play', () => {
+  const container = document.getElementById('video-container');
   const canvas = faceapi.createCanvasFromMedia(video);
-  document.body.appendChild(canvas);
+  container.appendChild(canvas);
+
   const displaySize = { width: video.width, height: video.height };
   faceapi.matchDimensions(canvas, displaySize);
 
@@ -30,8 +41,9 @@ video.addEventListener('play', () => {
       .withFaceExpressions();
 
     const resized = faceapi.resizeResults(detections, displaySize);
-    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-    faceapi.draw.drawDetections(canvas, resized);
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
 
     if (detections.length > 0) {
       const expressions = detections[0].expressions;
@@ -59,3 +71,6 @@ function traducir(exp) {
   };
   return mapa[exp] || exp;
 }
+
+// Inicia todo
+iniciar();
