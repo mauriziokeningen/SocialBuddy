@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .app-container {
+    width: 375px;
+    height: 812px;
+    position: relative;
+    background: white;
+    border: 1px solid black;
+    overflow: hidden;
+  }
+  
+  .status-bar {
+    position: absolute;
+    top: 7px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .status-bar .time {
+    font-size: 14px;
+  }
+  
+  .header {
+    position: absolute;
+    top: 42px;
+    left: 67px;
+  }
+  
+  .header img:first-child {
+    width: 77px;
+    height: 82px;
+  }
+  
+  .header img:last-child {
+    width: 211px;
+    height: 48px;
+    margin-left: 10px;
+    position: absolute;
+    top: 19px;
+    left: 64px;
+  }
+  
+  h1 {
+    position: absolute;
+    top: 144px;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: black;
+  }
+  
+  #video {
+    position: absolute;
+    top: 277px;
+    left: 67px;
+    width: 236px;
+    height: 356px;
+    background: black;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+  
+  #feedback {
+    position: absolute;
+    top: 640px;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  
+  .mascota {
+    position: absolute;
+    bottom: 20px;
+    left: 121px;
+    width: 134px;
+    height: 136px;
+  }
+  

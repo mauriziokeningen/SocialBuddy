@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reconoce la emoción</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="https://unpkg.com/face-api.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <div class="header">
+      <img src="assets/logo.png" alt="icono" />
+      <img src="assets/logoLetters.png" alt="logo" />
+    </div>
+
+    <h1 id="titulo" style="font-family: Mulish;">Haz la emoción: <span id="emocion-objetivo">felicidad</span></h1>
+
+    <video id="video" autoplay muted playsinline></video>
+
+    <p id="feedback">Esperando tu expresión...</p>
+
+  </div>
+</body>
+</html>
