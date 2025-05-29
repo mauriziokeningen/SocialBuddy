@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Resultados</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="emocion.css" />
+</head>
+<body>
+  <div class="app-container">
+    <div class="content-wrapper">
+      <!-- Header con logos -->
+      <div class="header">
+        <img src="assets/logo.png" alt="icono" class="logo-icon" />
+        <img src="assets/logoLetters.png" alt="logo" class="logo-text" />
+      </div>
+
+      <!-- Título -->
+      <h1>¡Actividad completada!</h1>
+      
+      <!-- Resultado dinámico -->
+      <p id="result" style="font-size: 22px; margin-top: 60px;"></p>
+
+      <img src="assets/trofeo.jpg" alt="Trofeo" style="width: 400px; height: 400px; margin: 40px auto 0 auto; display: block;" />
+
+    </div>
+
+    <!-- Botones -->
+    <div class="buttons-feedback-wrapper" style="position: absolute; top: 850px; left: 20px; right: 20px; display: flex; justify-content: center;">
+  <button 
+    id="exit-button" 
+    onclick="goToMainMenu()" 
+    style="
+      width: 250px;
+      padding: 15px 10px;
+      font-size: 18px;
+      background-color: #ff5c5c;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    "
+  >
+    Volver al menú principal
+  </button>
+</div>
+  </div>
+
+  <script>
+    // Obtener datos desde la URL
+    const params = new URLSearchParams(window.location.search);
+    const score = params.get('score');
+    const total = params.get('total');
+
+    // Mostrar resultados
+    document.getElementById("result").textContent = `Tu puntuación fue ${score} de ${total}`;
+
+    function goToMainMenu() {
+      window.location.href = 'mainMenu.html';
+    }
+  </script>
+</body>
+</html>

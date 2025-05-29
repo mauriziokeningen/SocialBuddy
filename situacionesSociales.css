@@ -1,0 +1,104 @@
+body {
+  margin: 0;
+  font-family: 'Mulish', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.app-container {
+  position: relative;
+  text-align: center;
+  width: 414px;
+  height: 896px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.logo-icon {
+  width: 50px;
+  height: auto;
+}
+
+.logo-text {
+  height: 40px;
+  object-fit: contain;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.situation-text {
+  font-size: 22px;
+  margin: 60px 20px 40px 20px;
+  min-height: 140px;
+  color: #444;
+}
+
+.button-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+
+.button-grid button {
+  padding: 15px 10px;
+  font-size: 18px;
+  background-color: #27C983;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.button-grid button:hover {
+  background-color: #1fa76b;
+}
+
+#feedback {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+  min-height: 24px;
+}
+
+#exit-button {
+  padding: 15px 10px;
+  font-size: 18px;
+  background-color: #ff5c5c;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  width: 250px;
+  transition: background-color 0.3s ease;
+  margin: 0 auto 20px auto;
+}
+
+#exit-button:hover {
+  background-color: #e04b4b;
+}
