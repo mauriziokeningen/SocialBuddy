@@ -71,6 +71,11 @@ const emotions = [
       }, 1500);
     }
   }
+
+  function goToMainMenu() {
+  // Cambia 'index.html' a la ruta de tu menú principal
+  window.location.href = 'mainMenu.html';
+  }
   
   window.onload = loadRandomEmotion;
   

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Menú Principal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mainMenu.css" />
+</head>
+<body>
+  <div class="app-container">
+    <div class="header">
+      <img src="assets/logo.png" alt="icono" class="logo-icon" />
+      <img src="assets/logoLetters.png" alt="logo" class="logo-text" />
+    </div>
+
+    <h1>Elige una actividad para realizar</h1>
+
+    <div class="button-grid">
+      <button onclick="window.location.href='emocion.html'">Reconocer Emociones</button>
+      <button onclick="window.location.href='detectarCara.html'">Cámara Facial</button>
+      <button onclick="window.location.href='situacionesSociales.html'">Situaciones Sociales</button>
+      <button class="exit-button" onclick="exitGame()">Salir</button>
+    </div>
+  </div>
+
+  <script>
+    function exitGame() {
+      window.location.href = "https://www.google.com";
+    }
+  </script>
+</body>
+</html>

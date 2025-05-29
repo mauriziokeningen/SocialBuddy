@@ -1,78 +1,125 @@
 body {
-    margin: 0;
-    font-family: 'Mulish', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-  
-  .app-container {
-    text-align: center;
-    max-width: 480px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .logo-icon {
-    width: 50px;
-    height: auto;
-  }
-  
-  .logo-text {
-    height: 40px;
-    object-fit: contain;
-  }
-  
-  h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
-  }
-  
-  .emotion-img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    margin-bottom: 20px;
-    border-radius: 10px;
-  }
-  
-  .button-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 20px;
-  }
-  
-  .button-grid button {
-    padding: 15px 10px;
-    font-size: 18px;
-    background-color: #27C983;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .button-grid button:hover {
-    background-color: #1fa76b;
-  }
-  
-  #feedback {
-    font-size: 16px;
-    color: #666;
-  }
-  
+  margin: 0;
+  font-family: 'Mulish', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.app-container {
+  position: relative; /* importante para el posicionamiento absoluto interno */
+  text-align: center;
+  width: 414px;
+  height: 896px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.content-wrapper {
+  /* Ocupa espacio normal arriba */
+  /* Puedes quitarle margen-bottom para que no empuje botones */
+  margin-bottom: 0;
+}
+
+.buttons-feedback-wrapper {
+  position: absolute;  /* Para sacarlo del flujo y fijarlo */
+  bottom: 80px;        /* Ajusta esta distancia desde el fondo */
+  left: 20px;          /* Igual que el padding horizontal */
+  right: 20px;
+  top: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 30px;
+  width: 100%;
+  margin: 0;
+}
+
+.button-grid button {
+  padding: 15px 10px;
+  font-size: 18px;
+  background-color: #27C983;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.button-grid button:hover {
+  background-color: #1fa76b;
+}
+
+#feedback {
+  font-size: 16px;
+  color: #666;
+  margin-top: 20px;;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.logo-icon {
+  width: 50px;
+  height: auto;
+}
+
+.logo-text {
+  height: 40px;
+  object-fit: contain;
+}
+
+h1 {
+  margin-top: 60px;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.emotion-img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  margin-top: 60px;
+}
+
+
+#exit-button {
+  padding: 15px 10px;
+  font-size: 18px;
+  background-color: #ff5c5c; /* rojo para destacar */
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-bottom: 20px; /* espacio debajo */
+  width: 250px;
+  transition: background-color 0.3s ease;
+}
+
+#exit-button:hover {
+  background-color: #e04b4b;
+}
+

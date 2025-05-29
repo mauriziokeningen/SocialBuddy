@@ -3,34 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <title>Reconoce la emoción</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="emocion.css" />
   <script defer src="emocion.js"></script>
 </head>
 <body>
   <div class="app-container">
-    <!-- Header con logos -->
-    <div class="header">
-      <img src="assets/logo.png" alt="icono" class="logo-icon" />
-      <img src="assets/logoLetters.png" alt="logo" class="logo-text" />
+    <div class="content-wrapper">
+      <!-- Header con logos -->
+      <div class="header">
+        <img src="assets/logo.png" alt="icono" class="logo-icon" />
+        <img src="assets/logoLetters.png" alt="logo" class="logo-text" />
+      </div>
+
+      <!-- Título -->
+      <h1>¿Qué emoción es esta?</h1>
+
+      <!-- Imagen de emoción -->
+      <img id="emotion-img" src="" alt="Emoción" class="emotion-img" />
     </div>
 
-    <!-- Título -->
-    <h1>¿Qué emoción es esta?</h1>
+    <!-- Botones y feedback juntos en un contenedor -->
+    <div class="buttons-feedback-wrapper">
+      
+      <div class="button-grid">
+        <button onclick="checkAnswer('felicidad')">Felicidad</button>
+        <button onclick="checkAnswer('tristeza')">Tristeza</button>
+        <button onclick="checkAnswer('enojo')">Enojo</button>
+        <button onclick="checkAnswer('miedo')">Miedo</button>
+      </div>
 
-    <!-- Imagen de emoción -->
-    <img id="emotion-img" src="" alt="Emoción" class="emotion-img" />
+      <p id="feedback">Selecciona la emoción correcta</p>
 
-    <!-- Botones -->
-    <div class="button-grid">
-      <button onclick="checkAnswer('felicidad')">Felicidad</button>
-      <button onclick="checkAnswer('tristeza')">Tristeza</button>
-      <button onclick="checkAnswer('enojo')">Enojo</button>
-      <button onclick="checkAnswer('miedo')">Miedo</button>
+      <button id="exit-button" onclick="goToMainMenu()">Salir al menú principal</button>
     </div>
-
-    <!-- Retroalimentación opcional -->
-    <p id="feedback">Selecciona la emoción correcta</p>
   </div>
 </body>
 </html>
