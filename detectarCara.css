@@ -83,3 +83,21 @@ h1 {
   width: 134px;
   height: 136px;
 }
+
+#salir-btn {
+  padding: 15px 10px;
+  font-size: 18px;
+  background-color: #ff5c5c; /* rojo para destacar */
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-bottom: 20px; /* espacio debajo */
+  width: 250px;
+  transition: background-color 0.3s ease;
+  margin-top: 30px;
+}
+
+#salir-btn:hover {
+  background-color: #e04b4b;
+}
