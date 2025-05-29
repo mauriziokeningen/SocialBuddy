@@ -10,7 +10,7 @@ body {
 }
 
 .app-container {
-  position: relative;
+  position: relative; /* Para que los hijos absolutos se posicionen aquí */
   text-align: center;
   width: 414px;
   height: 896px;
@@ -21,7 +21,7 @@ body {
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* quitamos justify-content: space-between para no forzar espacios */
 }
 
 .header {
@@ -49,19 +49,40 @@ h1 {
 
 .situation-text {
   font-size: 22px;
-  margin: 60px 20px 40px 20px;
-  min-height: 140px;
+  margin: 0 20px;
+  min-height: 80px;
   color: #444;
+}
+
+/* Imagen variable, no afecta la posición de botones */
+.situation-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 0 0 50px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Nuevo contenedor absoluto para botones y feedback */
+.buttons-feedback-wrapper {
+  position: absolute;
+  bottom: 65px; /* Fijado 20px desde el fondo del contenedor */
+  left: 20px;   /* igual que padding */
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
 .button-grid {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  column-gap: 20px;
+  row-gap: 30px;
   width: 100%;
-  margin-bottom: 20px;
+  margin: 0; /* quitamos margin-bottom para que no desplace */
 }
-
 
 .button-grid button {
   padding: 15px 10px;
@@ -82,8 +103,9 @@ h1 {
 #feedback {
   font-size: 18px;
   color: #666;
-  margin-bottom: 20px;
+  margin-top: 20px;
   min-height: 24px;
+  text-align: center;
 }
 
 #exit-button {
@@ -96,7 +118,7 @@ h1 {
   cursor: pointer;
   width: 250px;
   transition: background-color 0.3s ease;
-  margin: 0 auto 20px auto;
+  margin-top: 10px;
 }
 
 #exit-button:hover {

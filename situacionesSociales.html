@@ -19,14 +19,20 @@
       <!-- Aquí se mostrará la situación -->
     </div>
 
-    <div class="button-grid">
-      <button id="option1" onclick="checkAnswer(0)"></button>
-      <button id="option2" onclick="checkAnswer(1)"></button>
+    <!-- Imagen de la situación -->
+    <img id="situation-image" src="" alt="Imagen de la situación" class="situation-image" />
+
+    <!-- Contenedor fijo para botones y feedback -->
+    <div class="buttons-feedback-wrapper">
+      <div class="button-grid">
+        <button id="option1" onclick="checkAnswer(0)"></button>
+        <button id="option2" onclick="checkAnswer(1)"></button>
+      </div>
+
+      <p id="feedback">Selecciona la opción correcta</p>
+
+      <button id="exit-button" onclick="goToMainMenu()">Salir al menú principal</button>
     </div>
-
-    <p id="feedback">Selecciona la opción correcta</p>
-
-    <button id="exit-button" onclick="goToMainMenu()">Salir al menú principal</button>
   </div>
 
   <script src="situacionesSociales.js"></script>

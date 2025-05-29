@@ -1,7 +1,7 @@
 const situations = [
   {
     text: "Alguien está hablando contigo.",
-    image: "someoneTalking.jpg",
+    image: "situations/someoneTalking.jpg",
     options: [
       { text: "Mirar a la persona y escuchar.", correct: true },
       { text: "Mirar hacia otro lado o hablar con otra persona.", correct: false }
@@ -9,23 +9,23 @@ const situations = [
   },
   {
     text: "Un amigo se ve triste.",
-    image: "persona_hablando.jpg",
+    image: "situations/sadFriend.jpg",
     options: [
       { text: "Preguntar “¿Estás bien?” y esperar su respuesta.", correct: true },
-      { text: "No hacer nada y seguir jugando solo.", correct: false }
+      { text: "No hacer nada e ignorarlo.", correct: false }
     ]
   },
   {
-    text: "Quieres jugar con un grupo de niños.",
-    image: "persona_hablando.jpg",
+    text: "Quieres jugar con un grupo de niños que tienen juguetes.",
+    image: "situations/joinGame.jpg",
     options: [
       { text: "Decir “¿Puedo jugar con ustedes?” con voz tranquila.", correct: true },
-      { text: "Tomar el juguete sin preguntar.", correct: false }
+      { text: "Tomar un juguete sin preguntar.", correct: false }
     ]
   },
   {
     text: "Alguien te dice “hola”.",
-    image: "persona_hablando.jpg",
+    image: "situations/sayHi.jpg",
     options: [
       { text: "Decir “hola” y sonreír.", correct: true },
       { text: "No responder o alejarte rápido.", correct: false }
@@ -33,23 +33,23 @@ const situations = [
   },
   {
     text: "Estás en clase y el maestro habla.",
-    image: "persona_hablando.jpg",
+    image: "situations/teacherTalking.jpg",
     options: [
-      { text: "Escuchar y no hablar.", correct: true },
-      { text: "Levantar la mano sin permiso o hablar sin esperar.", correct: false }
+      { text: "Escuchar y no hablar hasta que sea tu turno.", correct: true },
+      { text: "Hablar sin levantar la mano y esperar tu turno.", correct: false }
     ]
   },
   {
-    text: "Un niño quiere jugar con tu juguete.",
-    image: "persona_hablando.jpg",
+    text: "Llega un nuevo niño a tu clase.",
+    image: "situations/newFriend.jpg",
     options: [
-      { text: "Preguntar “¿Quieres jugar juntos?” y compartir.", correct: true },
-      { text: "Decir “No” y no dejarlo jugar.", correct: false }
+      { text: "Presentarte e invitarlo a jugar en el receso.", correct: true },
+      { text: "Ignorarlo y alejarte.", correct: false }
     ]
   },
   {
     text: "Estás en una fila para comprar algo.",
-    image: "persona_hablando.jpg",
+    image: "situations/inLine.jpg",
     options: [
       { text: "Esperar tu turno en silencio.", correct: true },
       { text: "Empujar para pasar adelante.", correct: false }
@@ -57,7 +57,7 @@ const situations = [
   },
   {
     text: "Alguien te da un regalo.",
-    image: "persona_hablando.jpg",
+    image: "situations/gift.jpg",
     options: [
       { text: "Decir “gracias” y sonreír.", correct: true },
       { text: "No decir nada y alejarte.", correct: false }
@@ -65,7 +65,7 @@ const situations = [
   },
   {
     text: "En el comedor, alguien te ofrece comida.",
-    image: "persona_hablando.jpg",
+    image: "situations/foodOffer.jpg",
     options: [
       { text: "Decir “gracias” aunque no te guste.", correct: true },
       { text: "Decir “qué asco” o tirar la comida.", correct: false }
@@ -73,7 +73,7 @@ const situations = [
   },
   {
     text: "Estás jugando y te enojas porque perdiste.",
-    image: "persona_hablando.jpg",
+    image: "situations/lostGame.jpg",
     options: [
       { text: "Respirar profundo y decir “está bien, puedo intentar otra vez”.", correct: true },
       { text: "Gritar o tirar las cosas.", correct: false }
@@ -84,53 +84,74 @@ const situations = [
 let currentSituation = 0;
 let score = 0;
 let awaitingAnswer = true;
+let shuffledOptions = [];
+let firstTry = true; // NUEVO: para controlar si es el primer intento
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 
 function loadSituation() {
+  if (currentSituation >= situations.length) {
+    // Redirigir a la página de resultados con parámetros
+    window.location.href = `resultadosEmocion.html?score=${score}&total=${situations.length}`;
+    return;
+  }
+
   const situation = situations[currentSituation];
   document.getElementById('situation-text').textContent = situation.text;
+  document.getElementById('situation-image').src = `assets/${situation.image}`;
 
-  // Cargar las opciones en botones
-  document.getElementById('option1').textContent = situation.options[0].text;
-  document.getElementById('option2').textContent = situation.options[1].text;
+  // Mezclar opciones
+  shuffledOptions = shuffleArray([...situation.options]);
 
-  // Reset feedback
+  // Mostrar opciones en botones
+  document.getElementById('option1').textContent = shuffledOptions[0].text;
+  document.getElementById('option2').textContent = shuffledOptions[1].text;
+
   const feedback = document.getElementById('feedback');
   feedback.textContent = "Selecciona la opción correcta";
   feedback.style.color = "#666";
 
   awaitingAnswer = true;
+  firstTry = true; // Reiniciar el primer intento para cada situación
 }
 
 function checkAnswer(optionIndex) {
-  if (!awaitingAnswer) return; // prevenir respuestas múltiples rápidas
+  if (!awaitingAnswer) return;
 
-  const situation = situations[currentSituation];
   const feedback = document.getElementById('feedback');
-  const chosenOption = situation.options[optionIndex];
+  const chosenOption = shuffledOptions[optionIndex];
 
   if (chosenOption.correct) {
     feedback.textContent = "¡Correcto!";
     feedback.style.color = "green";
 
-    if (awaitingAnswer) {
-      score++;
+    if (firstTry) {
+      score++;  // Solo aumentar si fue correcto en el primer intento
     }
+
+    awaitingAnswer = false;
+
+    setTimeout(() => {
+      currentSituation++;
+      loadSituation();
+    }, 1500);
   } else {
     feedback.textContent = "Inténtalo de nuevo.";
     feedback.style.color = "red";
+
+    firstTry = false; // Ya no es el primer intento
+
+    setTimeout(() => {
+      feedback.textContent = "Selecciona la opción correcta";
+      feedback.style.color = "#666";
+    }, 1500);
   }
-
-  awaitingAnswer = false;
-
-  setTimeout(() => {
-    currentSituation++;
-    if (currentSituation >= situations.length) {
-      alert(`Terminaste! Puntaje: ${score} / ${situations.length}`);
-      currentSituation = 0;
-      score = 0;
-    }
-    loadSituation();
-  }, 1500);
 }
 
 function goToMainMenu() {
