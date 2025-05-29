@@ -75,13 +75,13 @@ video.addEventListener('play', () => {
 
 function traducir(exp) {
   const mapa = {
-    happy: 'felicidad',
-    sad: 'tristeza',
-    angry: 'enojo',
-    surprised: 'sorpresa',
-    disgusted: 'asco',
-    fearful: 'miedo',
-    neutral: 'neutral'
+    happy: 'Felicidad',
+    sad: 'Tristeza',
+    angry: 'Enojo',
+    surprised: 'Sorpresa',
+    disgusted: 'Asco',
+    fearful: 'Miedo',
+    neutral: 'Neutral'
   };
   return mapa[exp] || exp;
 }
